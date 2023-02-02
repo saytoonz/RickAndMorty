@@ -11,7 +11,6 @@ final class RMTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
         setUpTabs()
     }
 
@@ -21,18 +20,25 @@ final class RMTabBarController: UITabBarController {
         let episodesVC = RMEpisodeViewController()
         let settingsVC = RMSettingsViewController()
         
-        charactersVC.title = "Characters"
-        locationsVC.title = "Locations"
-        episodesVC.title = "Episodes"
-        settingsVC.title = "Settings"
-        
-        let nav1 = UINavigationController(rootViewController: charactersVC)
+        charactersVC.navigationItem.largeTitleDisplayMode = .automatic
+        locationsVC.navigationItem.largeTitleDisplayMode = .automatic
+        episodesVC.navigationItem.largeTitleDisplayMode = .automatic
+        settingsVC.navigationItem.largeTitleDisplayMode = .automatic
+
+        let nav1 =  UINavigationController(rootViewController: charactersVC)
         let nav2 = UINavigationController(rootViewController: locationsVC)
         let nav3 = UINavigationController(rootViewController: episodesVC)
         let nav4 = UINavigationController(rootViewController: settingsVC)
+       
+        
+        let navs = [nav1, nav2, nav3, nav4]
+        
+        for nav in navs {
+            nav.navigationBar.prefersLargeTitles = true
+        }
 
         setViewControllers(
-            [cha, nav2, nav3, nav4],
+            navs,
              animated: true
         )
         
