@@ -23,7 +23,14 @@ final class RMCharacterViewController: UIViewController {
             ]
         )
         
-        print(request.url)
+        print(request.url ?? "Hey")
+        
+        RMService.shared.execute(request, expecting: RMCharacter.self, completion: { result in
+            
+//            switch result {
+//                case .success(<#T##RMCharacter#>)
+//            }
+        })
     }
     
 }
