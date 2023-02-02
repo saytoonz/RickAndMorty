@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// Controller to show and shearch for Episodes
 final class RMEpisodeViewController: UIViewController {
 
     override func viewDidLoad() {

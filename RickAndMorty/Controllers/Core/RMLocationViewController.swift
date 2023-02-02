@@ -7,6 +7,8 @@
 
 import UIKit
 
+
+/// Controller to show and shearch for Location
 final class RMLocationViewController: UIViewController {
 
     override func viewDidLoad() {
