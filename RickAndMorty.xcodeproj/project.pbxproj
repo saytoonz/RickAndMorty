@@ -22,6 +22,8 @@
 		22E2F38A298C695800E86E12 /* RMCharacterStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E2F389298C695800E86E12 /* RMCharacterStatus.swift */; };
 		22E2F38C298C69C400E86E12 /* RMCharacterGender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E2F38B298C69C400E86E12 /* RMCharacterGender.swift */; };
 		22E2F390298C881B00E86E12 /* RMGetAllCharactersResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E2F38F298C881B00E86E12 /* RMGetAllCharactersResponse.swift */; };
+		22E2F392298C8C6C00E86E12 /* CharacterListViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E2F391298C8C6C00E86E12 /* CharacterListViewViewModel.swift */; };
+		22E2F394298C8D2100E86E12 /* CharacterListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E2F393298C8D2100E86E12 /* CharacterListView.swift */; };
 		22FD09C8298C30CA0020F22D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FD09C7298C30CA0020F22D /* AppDelegate.swift */; };
 		22FD09CA298C30CA0020F22D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FD09C9298C30CA0020F22D /* SceneDelegate.swift */; };
 		22FD09CC298C30CA0020F22D /* RMTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FD09CB298C30CA0020F22D /* RMTabBarController.swift */; };
@@ -45,6 +47,8 @@
 		22E2F389298C695800E86E12 /* RMCharacterStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCharacterStatus.swift; sourceTree = "<group>"; };
 		22E2F38B298C69C400E86E12 /* RMCharacterGender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCharacterGender.swift; sourceTree = "<group>"; };
 		22E2F38F298C881B00E86E12 /* RMGetAllCharactersResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMGetAllCharactersResponse.swift; sourceTree = "<group>"; };
+		22E2F391298C8C6C00E86E12 /* CharacterListViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewViewModel.swift; sourceTree = "<group>"; };
+		22E2F393298C8D2100E86E12 /* CharacterListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListView.swift; sourceTree = "<group>"; };
 		22FD09C4298C30CA0020F22D /* RickAndMorty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickAndMorty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22FD09C7298C30CA0020F22D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22FD09C9298C30CA0020F22D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -85,6 +89,7 @@
 		22E2F368298C467600E86E12 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				22E2F393298C8D2100E86E12 /* CharacterListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -92,6 +97,7 @@
 		22E2F369298C468500E86E12 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				22E2F391298C8C6C00E86E12 /* CharacterListViewViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -261,6 +267,7 @@
 			files = (
 				22E2F390298C881B00E86E12 /* RMGetAllCharactersResponse.swift in Sources */,
 				22E2F386298C65EF00E86E12 /* RMOrigin.swift in Sources */,
+				22E2F394298C8D2100E86E12 /* CharacterListView.swift in Sources */,
 				22E2F388298C666D00E86E12 /* RMSingleLocation.swift in Sources */,
 				22E2F38A298C695800E86E12 /* RMCharacterStatus.swift in Sources */,
 				22E2F38C298C69C400E86E12 /* RMCharacterGender.swift in Sources */,
@@ -276,6 +283,7 @@
 				22E2F384298C5B7F00E86E12 /* RMEndpoint.swift in Sources */,
 				22E2F36E298C480B00E86E12 /* RMLocation.swift in Sources */,
 				22E2F382298C59CE00E86E12 /* RMRequest.swift in Sources */,
+				22E2F392298C8C6C00E86E12 /* CharacterListViewViewModel.swift in Sources */,
 				22E2F378298C49E300E86E12 /* RMCharacterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

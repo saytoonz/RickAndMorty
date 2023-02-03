@@ -9,23 +9,20 @@ import UIKit
 
 /// Controller to show and shearch for Characters
 final class RMCharacterViewController: UIViewController {
+    private let characterListView = CharacterListView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         title = "Characters"
-      
         
-        RMService.shared.execute(.listCharactersRequest, expecting: RMGetAllCharactersResponse.self, completion: { result in
-            
-            switch result {
-            case .success(let model):
-                print("Total: " + String(model.info.count))
-                print("Total results: " + String(model.results.count))
-            case .failure(let error):
-                print(String(describing: error))
-            }
-            
-        })
+        view.addSubview(characterListView)
+        NSLayoutConstraint.activate([
+            characterListView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            characterListView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            characterListView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
+            characterListView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor)
+        ])
     }
     
 }
