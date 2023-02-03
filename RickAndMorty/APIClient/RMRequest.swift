@@ -75,3 +75,7 @@ final class RMRequest {
     }
     
 }
+
+extension RMRequest {
+    static let listCharactersRequest = RMRequest(endPoint: .character)
+}
