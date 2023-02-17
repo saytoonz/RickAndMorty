@@ -32,6 +32,26 @@ final class RMRequest {
         self.queryParameters = queryParameters
     }
     
+    convenience init?(url: URL ) {
+        let string = url.absoluteString
+        if !string.contains(Constants.baseUrl) {
+            return nil
+        }
+        let trimmed = string.replaceOccurrences(of: Constants.baseUrl+"/", with:"")
+        
+        if trimmed.contains("/") {
+            let components = trimmed.components(separatedBy: "/")
+            
+            if !components.isEmpty {
+                let endPointString = components[0]
+            }
+            
+        }else if trimmed.contains("?") {
+            
+        }
+        
+        return nil
+    }
     
     /// API Constant
     private struct Constants {
