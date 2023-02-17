@@ -7,6 +7,7 @@
 
 import Foundation
 
+
 /// Object that represents a single API call
 final class RMRequest {
     /// Desired endpoints
@@ -32,21 +33,35 @@ final class RMRequest {
         self.queryParameters = queryParameters
     }
     
-    convenience init?(url: URL ) {
+    convenience init?(url: URL) {
         let string = url.absoluteString
         if !string.contains(Constants.baseUrl) {
             return nil
         }
-        let trimmed = string.replaceOccurrences(of: Constants.baseUrl+"/", with:"")
+        let trimmed = string.replacing( Constants.baseUrl+"/", with:"")
         
         if trimmed.contains("/") {
             let components = trimmed.components(separatedBy: "/")
             
             if !components.isEmpty {
-                let endPointString = components[0]
+                let endpointString = components[0]
+                if let rmEndpoint = RMEndpoint(rawValue: endpointString) {
+                    self.init(endPoint: rmEndpoint)
+                    return
+                }
             }
             
         }else if trimmed.contains("?") {
+            let components = trimmed.components(separatedBy: "?")
+            
+            if !components.isEmpty {
+                let endpointString = components[0]
+                if let rmEndpoint = RMEndpoint(rawValue: endpointString) {
+                    self.init(endPoint: rmEndpoint)
+                    return
+                }
+            }
+            
             
         }
         
