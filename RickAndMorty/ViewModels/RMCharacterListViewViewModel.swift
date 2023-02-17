@@ -17,6 +17,8 @@ final class RMCharacterListViewViewModel: NSObject {
     
     public weak var delegate: RMCharacterListViewViewModelDelegate?
     
+    private var isLoadingMoreCharacters = false
+    
     private var characters: [RMCharacter] = []{
         didSet{
             for character in characters {
@@ -58,8 +60,12 @@ final class RMCharacterListViewViewModel: NSObject {
     }
     
     /// Paginate if aditional characters are needed
-    public func fetchAdditionalCharacters(){
-        
+    public func fetchAdditionalCharacters(url: URL){
+        isLoadingMoreCharacters = true
+        RMService.shared.execute(
+            RMRequest,
+            expecting: <#T##(Decodable & Encodable).Protocol#>,
+            completion: <#T##(Result<Decodable & Encodable, Error>) -> Void#>)
     }
     
     public var shouldShowLoadMoreIndicator:Bool{
@@ -90,15 +96,18 @@ extension RMCharacterListViewViewModel : UICollectionViewDataSource, UICollectio
     
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        guard kind == UICollectionView.elementKindSectionFooter else{
+        
+        guard kind == UICollectionView.elementKindSectionFooter ,
+              let footer = collectionView.dequeueReusableSupplementaryView(
+                ofKind: kind,
+                withReuseIdentifier: RMFooterLoadingCollectionReusableView.identifier,
+                for: indexPath
+              ) as? RMFooterLoadingCollectionReusableView
+                 else {
             fatalError("Unsupported")
         }
         
-        let footer = collectionView.dequeueReusableSupplementaryView(
-            ofKind: kind,
-            withReuseIdentifier: RMFooterLoadingCollectionReusableView.identifier,
-            for: indexPath)
-        
+        footer.startAnimating()
         return footer
     }
     
@@ -131,8 +140,20 @@ extension RMCharacterListViewViewModel : UICollectionViewDataSource, UICollectio
 
 extension RMCharacterListViewViewModel: UIScrollViewDelegate{
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        guard shouldShowLoadMoreIndicator else{
+        guard shouldShowLoadMoreIndicator,
+              !isLoadingMoreCharacters,
+              let nextUrlString = apiInfo?.next,
+              let url = URL(string: nextUrlString) else{
             return
         }
+        let offset  = scrollView.contentOffset.y
+        let totalContentHeight = scrollView.contentSize.height
+        let totalSVFixedHeight = scrollView.frame.height
+        
+        if offset >=  (totalContentHeight - totalSVFixedHeight-120){
+            //Start fetching data
+            fetchAdditionalCharacters(url: url)
+        }
+        
     }
 }
