@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22114B2A29A0C35D0001BE73 /* RMImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22114B2929A0C35D0001BE73 /* RMImageLoader.swift */; };
 		222DE100299ECCC6003D6C90 /* RMCharacterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222DE0FF299ECCC6003D6C90 /* RMCharacterCollectionViewCell.swift */; };
 		222DE102299ECEEE003D6C90 /* RMCharacterCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222DE101299ECEEE003D6C90 /* RMCharacterCollectionViewCellViewModel.swift */; };
 		222DE105299EF25B003D6C90 /* RMCharacterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222DE104299EF25B003D6C90 /* RMCharacterDetailViewController.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		22114B2929A0C35D0001BE73 /* RMImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RMImageLoader.swift; path = RickAndMorty/Views/RMImageLoader.swift; sourceTree = SOURCE_ROOT; };
 		222DE0FF299ECCC6003D6C90 /* RMCharacterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCharacterCollectionViewCell.swift; sourceTree = "<group>"; };
 		222DE101299ECEEE003D6C90 /* RMCharacterCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCharacterCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
 		222DE104299EF25B003D6C90 /* RMCharacterDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCharacterDetailViewController.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 		22E2F36B298C46C000E86E12 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				22114B2929A0C35D0001BE73 /* RMImageLoader.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 				22E2F390298C881B00E86E12 /* RMGetAllCharactersResponse.swift in Sources */,
 				222DE109299EF427003D6C90 /* RMCharacterDetailViewViewModel.swift in Sources */,
 				22E2F386298C65EF00E86E12 /* RMOrigin.swift in Sources */,
+				22114B2A29A0C35D0001BE73 /* RMImageLoader.swift in Sources */,
 				22E2F394298C8D2100E86E12 /* RMCharacterListView.swift in Sources */,
 				22E2F388298C666D00E86E12 /* RMSingleLocation.swift in Sources */,
 				22E2F38A298C695800E86E12 /* RMCharacterStatus.swift in Sources */,
