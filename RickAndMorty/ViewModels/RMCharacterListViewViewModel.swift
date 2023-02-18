@@ -90,10 +90,6 @@ final class RMCharacterListViewViewModel: NSObject {
                     let info = responseModel.info
                     strongSelf.apiInfo = info
                     
-                    print(moreResult.count)
-                    print(moreResult.first?.name ?? "no name")
-                    
-                    
                     let originalCount = strongSelf.characters.count
                     let newCount = moreResult.count
                     let total = originalCount+newCount
@@ -101,15 +97,13 @@ final class RMCharacterListViewViewModel: NSObject {
                     let indexPathsToAdd : [IndexPath] = Array(startingIndex..<(startingIndex+newCount)).compactMap({
                         return IndexPath(row: $0, section: 0)
                     })
-                    print(indexPathsToAdd)
                     strongSelf.characters.append(contentsOf: moreResult)
-                    print(strongSelf.characters.count)
                     
                     DispatchQueue.main.async {
                         strongSelf.delegate?.didLoadMoreCharacters(
                             with: indexPathsToAdd
                         )
-                        self?.isLoadingMoreCharacters = false
+                        strongSelf.isLoadingMoreCharacters = false
                     }
                 case .failure(let error ):
                     print(String(describing: error))
