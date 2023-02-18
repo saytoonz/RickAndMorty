@@ -19,6 +19,9 @@ final class RMRequest {
     /// Query parameters for API if any
     private let queryParameters: [URLQueryItem]
     
+    
+    // MARK: - Init
+    
     /// Construct Requiest
     /// - Parameters:
     ///   - endPoint:  Target Endpoint
@@ -33,6 +36,10 @@ final class RMRequest {
         self.queryParameters = queryParameters
     }
     
+    // MARK: - convenience Init
+    
+    /// Attempt to create request
+    /// - Parameter url: URL to parse
     convenience init?(url: URL) {
         let string = url.absoluteString
         if !string.contains(Constants.baseUrl) {
@@ -45,8 +52,14 @@ final class RMRequest {
             
             if !components.isEmpty {
                 let endpointString = components[0]
+                var pathComponents:[String] = []
+                if components.count > 1 {
+                    pathComponents = components
+                    pathComponents.removeFirst()
+                }
                 if let rmEndpoint = RMEndpoint(rawValue: endpointString) {
-                    self.init(endPoint: rmEndpoint)
+                    self.init(endPoint: rmEndpoint,  pathComponents: pathComponents
+                    )
                     return
                 }
             }
