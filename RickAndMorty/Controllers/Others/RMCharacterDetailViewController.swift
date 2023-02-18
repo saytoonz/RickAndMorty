@@ -42,7 +42,7 @@ final class RMCharacterDetailViewController: UIViewController {
         )
         
         addContraints()
-        viewModel.fetchCharactersData()
+//        viewModel.fetchCharactersData()
     }
     
    
