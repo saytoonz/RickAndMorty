@@ -42,11 +42,11 @@ final class RMCharacterDetailViewController: UIViewController {
         )
         
         addContraints()
-//        viewModel.fetchCharactersData()
+        detailView.collectionView?.delegate = self
+        detailView.collectionView?.dataSource = self
     }
     
    
-    
     @objc
     private func didTapShare(){
         //Share ooo share, share character info
@@ -60,5 +60,21 @@ final class RMCharacterDetailViewController: UIViewController {
             detailView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor)
         ])
     }
+}
 
+// MARK: - CollectionView
+
+extension RMCharacterDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 20
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+        cell.backgroundColor = .systemPink
+        
+        return cell
+    }
+    
+     
 }
