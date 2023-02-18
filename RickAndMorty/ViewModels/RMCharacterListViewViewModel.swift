@@ -23,13 +23,17 @@ final class RMCharacterListViewViewModel: NSObject {
     private var characters: [RMCharacter] = []{
         didSet{
             for character in characters {
-                let viewModel = RMCharacterCollectionViewCellViewModel(
+                let viewModel =  RMCharacterCollectionViewCellViewModel(
                     characterName: character.name,
                     characterStatus: character.status,
                     characterImageUrl: URL(string: character.image)
                 )
                 
-                cellViewModel.append(viewModel)
+                if !cellViewModel.contains(viewModel) {
+                    cellViewModel.append(viewModel)
+                }
+                
+                
             }
         }
     }
@@ -85,7 +89,10 @@ final class RMCharacterListViewViewModel: NSObject {
                     let moreResult = responseModel.results
                     let info = responseModel.info
                     strongSelf.apiInfo = info
-                    strongSelf.characters.append(contentsOf: moreResult)
+                    
+                    print(moreResult.count)
+                    print(moreResult.first?.name ?? "no name")
+                    
                     
                     let originalCount = strongSelf.characters.count
                     let newCount = moreResult.count
@@ -94,8 +101,9 @@ final class RMCharacterListViewViewModel: NSObject {
                     let indexPathsToAdd : [IndexPath] = Array(startingIndex..<(startingIndex+newCount)).compactMap({
                         return IndexPath(row: $0, section: 0)
                     })
-                    
                     print(indexPathsToAdd)
+                    strongSelf.characters.append(contentsOf: moreResult)
+                    print(strongSelf.characters.count)
                     
                     DispatchQueue.main.async {
                         strongSelf.delegate?.didLoadMoreCharacters(
